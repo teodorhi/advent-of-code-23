@@ -31,9 +31,8 @@ fun main() {
     }
 
     val sum = gears.sumOf { gear ->
-        val gearNumbers = numbers.filter { gear.first in it.x && gear.second in it.y }
-        if (gearNumbers.size == 2) gearNumbers[0].value * gearNumbers[1].value
-        else 0
+        numbers.filter { gear.first in it.x && gear.second in it.y }
+            .takeIf { it.size == 2 }?.let { it[0].value * it[1].value } ?: 0
     }
 
     println(sum)
