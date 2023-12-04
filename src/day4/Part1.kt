@@ -8,12 +8,13 @@ fun main() {
     val input = readInput("day4/data/input")
 
     input.sumOf { card ->
-        val (winners, numbers) = card.substringAfter(':').split('|')
-            .map { it.trim().split("\\s+".toRegex()) }.let { it[0] to it[1] }
-
-        val winCount = numbers.filter { winners.contains(it) }.size
+        val winCount = card.substringAfter(':').split('|')
+            .map { it.trim().split("\\s+".toRegex()).toSet() }
+            .let { it[0].intersect(it[1]).size }
 
         if (winCount == 0) 0
-        else 2.0.pow(winCount - 1).toInt()
+        else 2 pow (winCount - 1)
     }.println()
 }
+
+infix fun Int.pow(exponent: Int): Int = toDouble().pow(exponent).toInt()
