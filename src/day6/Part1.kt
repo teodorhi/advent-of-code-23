@@ -9,11 +9,8 @@ fun main() {
     }
 
     val permutations = input[0].zip(input[1]).map { race ->
-        var i = 1
-        while (i * (race.first - i) <= race.second) {
-            i++
-        }
-        race.first + 1 - (i * 2)
+        val first = (1..race.first).first { it * (race.first - it) >= race.second }
+        race.first + 1 - (first * 2)
     }
 
     println(permutations.reduce { acc, i ->

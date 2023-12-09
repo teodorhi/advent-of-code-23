@@ -7,11 +7,7 @@ fun main() {
         it.substringAfter(": ").filterNot { it == ' ' }
     }.map { it.toLong() }
 
-    var i = 1
+    val firstPossibleIndex = (1..race[0]).first { i ->  i * (race[0] - i) > race[1] }
 
-    while (i * (race[0] - i) <= race[1]) {
-        i++
-    }
-
-    println(race[0] + 1 - (i * 2))
+    println(race[0] + 1 - (firstPossibleIndex * 2))
 }
