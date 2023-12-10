@@ -12,7 +12,7 @@ fun main() {
 
     val sortedHands = input.sortedBy { p ->
         val hand = p[0].groupingBy { it }.eachCount().map { it.value }
-        val text = hand.sortedDescending().joinToString("").padEnd(5, '0')
+        val text = hand.sortedDescending().joinToString("")
         text + p[0].map { cards[it] }.joinToString("")
     }
     sortedHands

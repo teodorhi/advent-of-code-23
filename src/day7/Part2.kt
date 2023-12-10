@@ -19,7 +19,7 @@ fun main() {
             if (i == 0) v + (jokers ?: 0) else v
         }.ifEmpty { listOf(5) }
 
-        val text = bestHand.joinToString("").padEnd(5, '0')
+        val text = bestHand.joinToString("")
 
         text + p[0].map { cards[it] }.joinToString("")
     }
